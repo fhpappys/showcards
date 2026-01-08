@@ -1,89 +1,118 @@
-/* Shared theme using user's palette */
-:root{
-  --bg:#231F20;
-  --panel:#414042;
-  --text:#DCDDDE;
-  --muted:#BFB5D9;
-  --primary:#EABA09;
-  --primary-hover:#c79a08;
-  --border:#414042;
-}
-*{box-sizing:border-box}
-/* Load Pandemic (self-hosted) */
-@font-face {
-  font-family: 'Pandemic';
-  src: url('fonts/Pandemic.otf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-/* Headline neon flicker (already in your code) */
-@keyframes neon-flicker {
-  0%, 100% {
-    opacity: 1;
-    text-shadow: 0 0 8px #EABA09, 0 0 20px #EABA09, 0 0 40px #EABA09;
-  }
-  50% {
-    opacity: 0.7;
-    text-shadow: 0 0 8px #BFB5D9, 0 0 20px #BFB5D9, 0 0 40px #BFB5D9;
-  }
+/* shows.css - matches FH Pappy's palette + button style */
+
+.shows-wrap{
+  margin-top: 1.75rem;
+  text-align: left;            /* cards look better left-aligned */
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
 }
 
-.pandemic-flicker {
-  font-family:'Pandemic','Poppins',sans-serif;
-  text-transform:uppercase;
-  letter-spacing:2px;
-  font-size:3rem;
-  margin:0 0 1rem;
-  color:#EABA09;
-  animation: neon-flicker 6s ease-in-out infinite;
+.shows-title{
+  margin: 0 0 0.75rem 0;
+  font-size: 1.35rem;
+  letter-spacing: .5px;
+  text-align: center;          /* headline centered like the rest of the card */
 }
 
-/* Logo glow synced with headline */
-.logo {
-  max-width: 80vw;
-  max-height: 60vh;
-  height: auto;
-  width: auto;
-  margin-bottom: 2rem;
-
-  animation: logo-glow 2s ease-in-out infinite;
+.shows-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 14px;
+  margin-top: 0.75rem;
 }
 
-@keyframes logo-glow {
-  0%, 100% {
-    filter: drop-shadow(0 0 6px #EABA09)
-            drop-shadow(0 0 20px #EABA09)
-            drop-shadow(0 0 40px #BFB5D9);
-  }
-  50% {
-    filter: drop-shadow(0 0 2px #EABA09)
-            drop-shadow(0 0 8px #EABA09)
-            drop-shadow(0 0 20px #BFB5D9);
-  }
+/* Card */
+.show-card{
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 16px;
+  overflow: hidden;
+  background: rgba(0,0,0,0.18);
+  box-shadow: 0 0 18px rgba(0,0,0,0.25);
 }
 
-
-html,body{height:100%}
-body{
-  margin:0;
-  font-family: 'Poppins', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, 'Apple Color Emoji', 'Segoe UI Emoji';
-  background:var(--bg);
-  color:var(--text);
+.show-flyer{
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
+  background: rgba(255,255,255,0.06);
 }
-a{color:var(--primary);text-decoration:none}
-a:hover{text-decoration:underline}
-.container{max-width:900px;margin:0 auto;padding:2rem}
-.card{background:var(--panel);border:1px solid var(--border);border-radius:16px;box-shadow:0 0 20px rgba(0,0,0,0.35);padding:2rem}
-.btn{display:inline-block;background:var(--primary);color:#000;border:none;border-radius:12px;padding:0.9rem 1.25rem;font-weight:800;cursor:pointer}
-.btn:hover{background:var(--primary-hover)}
-.center{text-align:center}
-.logo{max-width:520px;width:100%;height:auto;display:block;margin:0 auto 1rem}
-nav{display:flex;gap:1rem;justify-content:center;margin-top:1rem;flex-wrap:wrap}
-footer{margin-top:2rem;text-align:center;color:var(--muted);font-size:0.9rem}
-input,textarea,select{width:100%;padding:0.75rem;margin-bottom:1.1rem;border-radius:10px;border:1px solid var(--border);background:var(--bg);color:var(--text)}
-label{display:block;margin-bottom:0.4rem;font-weight:600}
-h1,h2{margin:0 0 0.75rem 0}
-.subtitle{color:var(--muted);margin-bottom:1.5rem}
-hr{border:0;border-top:1px solid var(--border);margin:1.25rem 0}
-.small{font-size:0.9rem;color:var(--muted)}
+
+.show-body{
+  padding: 14px 14px 16px;
+}
+
+.show-date{
+  margin: 0 0 6px 0;
+  font-weight: 800;
+  color: var(--primary);
+}
+
+.show-band{
+  margin: 0 0 6px 0;
+  font-size: 1.05rem;
+  font-weight: 800;
+}
+
+.show-venue,
+.show-loc{
+  margin: 0 0 6px 0;
+  color: var(--text);
+  opacity: 0.92;
+}
+
+.show-notes{
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.35;
+  white-space: pre-wrap;
+}
+
+.show-actions{
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+
+/* Button style that matches your .btn, but scoped for card actions */
+.show-btn{
+  display: inline-block;
+  background: var(--primary);
+  color: #000;
+  border: none;
+  border-radius: 12px;
+  padding: 0.7rem 1rem;
+  font-weight: 800;
+  cursor: pointer;
+  text-decoration: none;
+}
+.show-btn:hover{
+  background: var(--primary-hover);
+  text-decoration: none;
+}
+
+/* Past toggle */
+.past-toggle{
+  margin: 16px 0 8px;
+  width: 100%;
+  text-align: center;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.18);
+  background: rgba(0,0,0,0.20);
+  color: var(--text);
+  padding: 0.85rem 1rem;
+  cursor: pointer;
+  font-weight: 800;
+}
+.past-toggle:hover{
+  border-color: rgba(255,255,255,0.26);
+}
+
+.is-hidden{ display: none; }
+
+/* Make it feel good on narrow screens */
+@media (max-width: 420px){
+  .shows-grid{ grid-template-columns: 1fr; }
+}
