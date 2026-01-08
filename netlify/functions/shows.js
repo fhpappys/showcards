@@ -60,10 +60,16 @@ export default async () => {
         const ticketUrl = clean(f.TicketURL || "");
         const moreInfoUrl = clean(f.MoreInfoURL || "");
         const notes = clean(f.Notes || "");
+        const doors = clean(f.Doors || "");
+        const price = clean(f.Price || "");
+
+
 
         return {
           id: rec.id,
           date: f.Date || null,
+          doors,
+          price,
           band,
           venue,
           city,
@@ -93,3 +99,4 @@ export default async () => {
     });
   }
 };
+
