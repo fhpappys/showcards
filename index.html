@@ -113,6 +113,18 @@
         <a class="btn" href="https://www.storysupplyco.com/collections/f-h-pappys-fundraiser-tee-pre-sale" target="_blank" rel="noopener">FH Pappy's Merch</a>
       </nav>
 
+      <!-- Shows -->
+      <section class="shows-wrap">
+        <h2 class="shows-title">Upcoming Shows</h2>
+        <div id="upcomingShows" class="shows-grid"></div>
+
+        <button id="togglePast" class="past-toggle" type="button">
+          Past Shows <span id="pastChevron">▾</span>
+        </button>
+
+        <div id="pastShows" class="shows-grid is-hidden"></div>
+      </section>
+
       <footer>© <span id="y"></span> FH Pappy's • York, PA</footer>
     </div>
   </div>
@@ -133,18 +145,25 @@
     const toggleBtn = document.getElementById('toggleNeonBtn');
 
     function updateButtonLabel(){
+      if (!toggleBtn) return;
       const neon = headline.classList.contains('pandemic-flicker');
       toggleBtn.textContent = neon ? 'Switch to Clean' : 'Switch to Neon';
     }
 
-    toggleBtn.addEventListener('click', () => {
-      headline.classList.toggle('pandemic');
-      headline.classList.toggle('pandemic-flicker');
-      updateButtonLabel();
-    });
+    if (toggleBtn) {
+      toggleBtn.addEventListener('click', () => {
+        headline.classList.toggle('pandemic');
+        headline.classList.toggle('pandemic-flicker');
+        updateButtonLabel();
+      });
+    }
 
     // Ensure button label matches initial state
     updateButtonLabel();
   </script>
+
+  <!-- Show cards -->
+  <link rel="stylesheet" href="/shows.css">
+  <script src="/shows.js" defer></script>
 </body>
 </html>
