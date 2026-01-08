@@ -36,37 +36,55 @@ export default async () => {
     }
 
     const data = await r.json();
-    const now = new Date();
+
+    // "Now" in America/New_York (matches your real-world expectation)
+    const nowNY = new Date(
+      new Date().toLocaleString("en-US", { timeZone: "America/New_York" })
+    );
+
+    const clean = (v) => (typeof v === "string" ? v.trim() : v);
 
     const records = (data.records || [])
       .map((rec) => {
         const f = rec.fields || {};
+
         const flyerUrl =
           Array.isArray(f.Flyer) && f.Flyer[0]
             ? (f.Flyer[0].thumbnails?.large?.url || f.Flyer[0].url)
             : null;
 
+        const band = clean(f.Band || f.Title || "");
+        const venue = clean(f.Venue || "");
+        const city = clean(f.City || "");
+        const state = clean(f.State || "");
+        const ticketUrl = clean(f.TicketURL || "");
+        const moreInfoUrl = clean(f.MoreInfoURL || "");
+        const notes = clean(f.Notes || "");
+
         return {
           id: rec.id,
           date: f.Date || null,
-          band: f.Band || f.Title || "",
-          venue: f.Venue || "",
-          city: f.City || "",
-          state: f.State || "",
-          ticketUrl: f.TicketURL || "",
-          moreInfoUrl: f.MoreInfoURL || "",
-          notes: f.Notes || "",
+          band,
+          venue,
+          city,
+          state,
+          ticketUrl,
+          moreInfoUrl,
+          notes,
           flyerUrl,
         };
       })
       .filter((x) => x.date);
 
-    const upcoming = records.filter((x) => new Date(x.date) >= now);
-    const past = records.filter((x) => new Date(x.date) < now).reverse();
+    const upcoming = records.filter((x) => new Date(x.date) >= nowNY);
+    const past = records.filter((x) => new Date(x.date) < nowNY).reverse();
 
     return new Response(JSON.stringify({ upcoming, past }), {
       status: 200,
-      headers: { "Content-Type": "application/json", "Cache-Control": "public, max-age=60" },
+      headers: {
+        "Content-Type": "application/json",
+        "Cache-Control": "public, max-age=60",
+      },
     });
   } catch (e) {
     return new Response(JSON.stringify({ error: "Server error", details: String(e) }), {
@@ -75,4 +93,3 @@ export default async () => {
     });
   }
 };
-
