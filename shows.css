@@ -1,0 +1,154 @@
+/* =========================================================
+   SHOW CARDS — FH PAPPY'S
+   Uses site CSS variables from assets/styles.css
+   ========================================================= */
+
+/* Wrapper */
+.shows-wrap{
+  margin-top: 1.75rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+  text-align: left;
+}
+
+/* Section titles */
+.shows-title{
+  margin: 0 0 0.75rem 0;
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: .5px;
+  text-align: center;
+}
+
+/* Grid layout */
+.shows-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 14px;
+  margin-top: 0.75rem;
+}
+
+/* Individual show card */
+.show-card{
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 16px;
+  overflow: hidden;
+  background: rgba(0,0,0,0.18);
+  box-shadow: 0 0 18px rgba(0,0,0,0.25);
+}
+
+/* Flyer image */
+.show-flyer{
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
+  background: rgba(255,255,255,0.06);
+}
+
+/* Card body */
+.show-body{
+  padding: 14px 14px 16px;
+}
+
+/* Date line */
+.show-date{
+  margin: 0 0 6px 0;
+  font-weight: 800;
+  color: var(--primary);
+}
+
+/* Band name */
+.show-band{
+  margin: 0 0 6px 0;
+  font-size: 1.05rem;
+  font-weight: 800;
+}
+
+/* Venue + location */
+.show-venue,
+.show-loc{
+  margin: 0 0 6px 0;
+  color: var(--text);
+  opacity: 0.92;
+}
+
+/* Notes / extra info */
+.show-notes{
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.35;
+  white-space: pre-wrap;
+}
+
+/* Action buttons */
+.show-actions{
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+
+.show-btn{
+  display: inline-block;
+  background: var(--primary);
+  color: #000;
+  border: none;
+  border-radius: 12px;
+  padding: 0.7rem 1rem;
+  font-weight: 800;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.show-btn:hover{
+  background: var(--primary-hover);
+  text-decoration: none;
+}
+
+/* =========================================================
+   Past Shows — inline section header (not a dropdown button)
+   ========================================================= */
+
+.past-toggle{
+  margin: 1.5rem 0 0.5rem;
+  padding-top: 1rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: none;
+  border-top: 1px solid var(--border);
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+  font-weight: 800;
+  font-size: 1.1rem;
+}
+
+.past-toggle:hover{
+  opacity: 0.9;
+}
+
+#pastChevron{
+  color: var(--muted);
+  font-weight: 800;
+}
+
+/* Past cards spacing */
+#pastShows{
+  margin-top: 0.75rem;
+}
+
+/* Hidden utility */
+.is-hidden{
+  display: none;
+}
+
+/* Mobile polish */
+@media (max-width: 420px){
+  .shows-grid{
+    grid-template-columns: 1fr;
+  }
+}
