@@ -1,11 +1,18 @@
-shows// Frontend show renderer for FH Pappy's
-
 const upcomingEl = document.getElementById("upcomingShows");
 const pastEl = document.getElementById("pastShows");
 const togglePastBtn = document.getElementById("togglePast");
 const pastChevron = document.getElementById("pastChevron");
 
-// Format date nicely (York-friendly)
+function esc(str) {
+  return String(str || "").replace(/[&<>"']/g, (c) => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#39;",
+  }[c]));
+}
+
 function formatDate(iso) {
   const d = new Date(iso);
   return d.toLocaleString("en-US", {
@@ -18,18 +25,6 @@ function formatDate(iso) {
   });
 }
 
-// Escape text to avoid accidental HTML injection
-function esc(str) {
-  return String(str || "").replace(/[&<>"']/g, (c) => ({
-    "&": "&amp;",
-    "<": "&lt;",
-    ">": "&gt;",
-    '"': "&quot;",
-    "'": "&#39;",
-  }[c]));
-}
-
-// Build a single show card
 function renderCard(show) {
   const loc = [show.city, show.state].filter(Boolean).join(", ");
   const flyer = show.flyerUrl
@@ -59,29 +54,35 @@ function renderCard(show) {
   `;
 }
 
-// Load shows from Netlify function
 async function loadShows() {
+  if (!upcomingEl || !pastEl) {
+    console.error("Show containers not found. Missing #upcomingShows or #pastShows in HTML.");
+    return;
+  }
+
+  upcomingEl.innerHTML = `<p class="small">Loading shows…</p>`;
+
   try {
-    const res = await fetch("/.netlify/functions/shows");
+    const res = await fetch("/.netlify/functions/shows", { cache: "no-store" });
+    if (!res.ok) throw new Error(`Shows fetch failed: ${res.status} ${res.statusText}`);
     const data = await res.json();
 
     upcomingEl.innerHTML =
-      data.upcoming && data.upcoming.length
+      data.upcoming?.length
         ? data.upcoming.map(renderCard).join("")
         : `<p class="small">No upcoming shows announced yet.</p>`;
 
     pastEl.innerHTML =
-      data.past && data.past.length
+      data.past?.length
         ? data.past.map(renderCard).join("")
         : `<p class="small">No past shows yet.</p>`;
   } catch (err) {
-    upcomingEl.innerHTML = `<p class="small">Unable to load shows.</p>`;
     console.error("Show load error:", err);
+    upcomingEl.innerHTML = `<p class="small">Unable to load shows.</p>`;
   }
 }
 
-// Toggle past shows open/closed
-if (togglePastBtn) {
+if (togglePastBtn && pastEl) {
   togglePastBtn.addEventListener("click", () => {
     const hidden = pastEl.classList.toggle("is-hidden");
     if (pastChevron) pastChevron.textContent = hidden ? "▾" : "▴";
