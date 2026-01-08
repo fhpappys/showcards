@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FH Pappy's - York, PA</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/styles.css">
+  <meta name="description" content="Live Music Coming Soon to York, PA">
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TQ2F406RRK"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-TQ2F406RRK');
+</script>
+<body>
+  <div class="container">
+    <div class="card center">
+      <img src="assets/logo.png" alt="FH Pappy's Logo" class="logo" />
+      <h1>Live Music Coming Soon to York, PA</h1>
+      <p class="subtitle">A new home for artists, bands, and the community.</p>
+      <nav>
+        <a class="btn" href="https://volunteer.fhpappys.com">Volunteer</a>
+        <a class="btn" href="https://www.facebook.com/fhpappysyork" target="_blank" rel="noopener">Facebook</a>
+        <a class="btn" href="https://www.instagram.com/fhpappys" target="_blank" rel="noopener">Instagram</a>
+        <a class="btn" href="https://www.gofundme.com/f/support-yorks-diy-music-revival" target="_blank" rel="noopener">Support our GoFundMe</a>
+                <a class="btn" href="https://www.storysupplyco.com/collections/f-h-pappys-fundraiser-tee-pre-sale" target="_blank" rel="noopener">FH Pappy's Merch</a>
+      </nav>
+      <footer>© <span id="y"></span> FH Pappy's • York, PA</footer>
+    </div>
+  </div>
+
+  <!-- Hidden detection form (forces Netlify to register the form) -->
+  <form name="volunteer" method="POST" data-netlify="true" style="display:none;">
+    <input type="hidden" name="form-name" value="volunteer">
+    <input type="text" name="name" value="placeholder">
+    <input type="email" name="email" value="test@example.com">
+  </form>
+
+  <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+</body>
+</html>

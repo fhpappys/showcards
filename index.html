@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FH Pappy's - York, PA</title>
+
+  <!-- Body font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet"/>
+
+  <!-- Self-hosted Pandemic font -->
+  <style>
+    @font-face{
+      font-family: 'Pandemic';
+      src: url('assets/fonts/Pandemic.otf') format('opentype');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    body{ font-family:'Poppins',sans-serif; }
+
+    /* Clean Pandemic style */
+    .pandemic{
+      font-family:'Pandemic','Poppins',sans-serif;
+      text-transform:uppercase;
+      letter-spacing:2px;
+      font-size:3rem;
+      margin:0 0 1rem;
+    }
+
+    /* Slow color-shift neon flicker */
+    @keyframes neon-flicker{
+      0%,100%{
+        opacity:1;
+        text-shadow:0 0 8px #EABA09, 0 0 20px #EABA09, 0 0 40px #EABA09;
+      }
+      50%{
+        opacity:.7;
+        text-shadow:0 0 8px #BFB5D9, 0 0 20px #BFB5D9, 0 0 40px #BFB5D9;
+      }
+    }
+    .pandemic-flicker{
+      font-family:'Pandemic','Poppins',sans-serif;
+      text-transform:uppercase;
+      letter-spacing:2px;
+      font-size:3rem;
+      margin:0 0 1rem;
+      color:#EABA09;
+      animation:neon-flicker 6s ease-in-out infinite;
+    }
+
+    /* Respect users who prefer less motion */
+    @media (prefers-reduced-motion: reduce){
+      .pandemic-flicker{ animation:none; }
+    }
+
+    /* Tiny helper to keep the toggle snug under the headline */
+    .neon-toggle{
+      margin: .25rem 0 1rem;
+      display: inline-flex;
+      gap:.5rem;
+      align-items:center;
+      font-size:.9rem;
+      opacity:.9;
+    }
+    .neon-toggle button{
+      cursor:pointer;
+      border:none;
+      border-radius:12px;
+      padding:.5rem .85rem;
+      font-weight:800;
+    }
+  </style>
+
+  <!-- Your theme/styles -->
+  <link rel="stylesheet" href="assets/styles.css"/>
+
+  <meta name="description" content="Live Music Coming Soon to York, PA"/>
+</head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TQ2F406RRK"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-TQ2F406RRK');
+</script>
+
+<body>
+  <div class="container">
+    <div class="card center">
+
+      <!-- Graphic logo (keep or remove as needed) -->
+      <img src="assets/logo.png" alt="FH Pappy's Logo" class="logo" />
+
+      <!-- Headline with Pandemic (starts in neon mode) -->
+      <h1 id="headline" class="pandemic">Live Music Coming Soon to York, PA</h1>
+
+      <!-- Toggle button
+      <div class="neon-toggle">
+        <button class="btn" id="toggleNeonBtn" type="button">Switch to Clean</button>
+      </div> -->
+      
+      <p class="subtitle">A new home for artists, bands, and the community.</p>
+
+      <nav>
+        <a class="btn" href="https://volunteer.fhpappys.com">Volunteer</a>
+        <a class="btn" href="https://www.facebook.com/fhpappysyork" target="_blank" rel="noopener">Facebook</a>
+        <a class="btn" href="https://www.instagram.com/fhpappys" target="_blank" rel="noopener">Instagram</a>
+        <a class="btn" href="https://www.gofundme.com/f/support-yorks-diy-music-revival" target="_blank" rel="noopener">Support our GoFundMe</a>
+        <a class="btn" href="https://www.storysupplyco.com/collections/f-h-pappys-fundraiser-tee-pre-sale" target="_blank" rel="noopener">FH Pappy's Merch</a>
+      </nav>
+
+      <footer>© <span id="y"></span> FH Pappy's • York, PA</footer>
+    </div>
+  </div>
+
+  <!-- Hidden detection form (forces Netlify to register the form) -->
+  <form name="volunteer" method="POST" data-netlify="true" style="display:none;">
+    <input type="hidden" name="form-name" value="volunteer">
+    <input type="text" name="name" value="placeholder">
+    <input type="email" name="email" value="test@example.com">
+  </form>
+
+  <script>
+   // Year
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Toggle headline style
+    const headline = document.getElementById('headline');
+    const toggleBtn = document.getElementById('toggleNeonBtn');
+
+    function updateButtonLabel(){
+      const neon = headline.classList.contains('pandemic-flicker');
+      toggleBtn.textContent = neon ? 'Switch to Clean' : 'Switch to Neon';
+    }
+
+    toggleBtn.addEventListener('click', () => {
+      headline.classList.toggle('pandemic');
+      headline.classList.toggle('pandemic-flicker');
+      updateButtonLabel();
+    });
+
+    // Ensure button label matches initial state
+    updateButtonLabel();
+  </script>
+</body>
+</html>

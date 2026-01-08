@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Volunteer With Us - FH Pappy's</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/styles.css">
+  <meta name="description" content="Volunteer sign-up form for FH Pappy's in York, PA.">
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <h1 class="center">Volunteer With FH Pappy's</h1>
+      <p class="subtitle center">Join our team in York, PA and help us make an impact. Fill out the form below to get started.</p>
+
+      <form name="volunteer"
+            method="POST"
+            data-netlify="true"
+            action="/volunteer.html"
+            netlify-honeypot="bot-field"
+            accept-charset="UTF-8"
+            enctype="application/x-www-form-urlencoded">
+
+        <!-- Netlify form detection -->
+        <input type="hidden" name="form-name" value="volunteer">
+
+        <!-- Honeypot (kept hidden) -->
+        <p style="display:none;">
+          <label>Don’t fill this out if you’re human: <input name="bot-field"></label>
+        </p>
+
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" name="phone" placeholder="(###) ###-####">
+
+        <label for="availability">Availability</label>
+        <input type="text" id="availability" name="availability" placeholder="e.g. weekends, evenings">
+
+        <label for="interest">Areas of Interest</label>
+        <select id="interest" name="interest">
+          <option value="">Choose one…</option>
+          <option>Event Help</option>
+          <option>Outreach / Canvassing</option>
+          <option>Fundraising</option>
+          <option>Logistics</option>
+          <option>Wherever needed</option>
+        </select>
+
+        <label for="message">Anything else we should know?</label>
+        <textarea id="message" name="message" rows="4" placeholder="Optional details"></textarea>
+
+        <button class="btn" type="submit">Sign Up</button>
+        <p class="small">By submitting, you agree to be contacted about volunteer opportunities.</p>
+      </form>
+
+      <hr>
+      <!-- Social + GoFundMe links (consistent across pages) -->
+      <nav class="center">
+        <a class="btn" href="https://www.facebook.com/fhpappysyork" target="_blank" rel="noopener">Facebook</a>
+        <a class="btn" href="https://www.instagram.com/fhpappys" target="_blank" rel="noopener">Instagram</a>
+        <a class="btn" href="https://www.gofundme.com/f/support-yorks-diy-music-revival" target="_blank" rel="noopener">Support our GoFundMe</a>
+        <a class="btn" href="index.html">Back to Home</a>
+      </nav>
+    </div>
+  </div>
+
+  <script>
+    // After the POST to /volunteer.html completes, send user to /success.html
+    (function () {{
+      const form = document.querySelector('form[name="volunteer"]');
+      if (!form) return;
+      form.addEventListener('submit', function () {{
+        setTimeout(function(){{ window.location.href = '/success.html'; }}, 50);
+      }});
+    }})();
+  </script>
+</body>
+</html>
