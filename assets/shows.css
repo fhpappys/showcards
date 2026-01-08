@@ -1,0 +1,28 @@
+/* Past toggle - make it feel like a section header, not a button */
+.past-toggle{
+  margin: 18px 0 8px;
+  width: 100%;
+  text-align: left;
+  border: none;
+  background: transparent;
+  color: var(--text);
+  padding: 0.25rem 0;
+  cursor: pointer;
+  font-weight: 800;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid var(--border);
+  padding-top: 1rem;
+}
+
+.past-toggle:hover{
+  opacity: 0.9;
+}
+
+/* Chevron gets a bit softer */
+#pastChevron{
+  color: var(--muted);
+  font-weight: 800;
+}
