@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>FH Pappy’s — Community Safety Guidelines</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <style>
+    :root{
+      --bg: #000;
+      --text: #fff;
+      --muted: rgba(255,255,255,0.82);
+      --muted2: rgba(255,255,255,0.65);
+      --border: rgba(255,255,255,0.22);
+      --border2: rgba(255,255,255,0.36);
+      --radius: 18px;
+    }
+
+    *{ box-sizing: border-box; }
+    html, body { height: 100%; }
+
+    body{
+      margin:0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    }
+
+    .wrap{
+      min-height: 100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding: 40px 16px;
+    }
+
+    .stack{
+      width: min(900px, 100%);
+      text-align:center;
+    }
+
+    .logo{
+      width: 220px;
+      max-width: 58vw;
+      height: auto;
+      display:block;
+      margin: 0 auto 18px;
+      filter: drop-shadow(0 12px 30px rgba(0,0,0,0.6));
+    }
+
+    h1{
+      margin: 0 0 10px;
+      font-size: clamp(28px, 4vw, 44px);
+      letter-spacing: -0.6px;
+      line-height: 1.05;
+    }
+
+    .sub{
+      margin: 0 auto 22px;
+      max-width: 72ch;
+      color: var(--muted);
+      line-height: 1.55;
+      font-size: 16px;
+    }
+
+    .links{
+      display:flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin: 0 0 26px;
+    }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      color: var(--text);
+      text-decoration:none;
+      background: transparent;
+      transition: border-color 160ms ease, transform 160ms ease, background 160ms ease;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .pill:hover{
+      border-color: var(--border2);
+      background: rgba(255,255,255,0.06);
+      transform: translateY(-1px);
+    }
+
+    .card{
+      margin: 0 auto;
+      width: min(900px, 100%);
+      text-align:left;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px 20px 8px;
+      background: rgba(255,255,255,0.03);
+    }
+
+    .content{
+      color: var(--muted);
+      line-height: 1.65;
+      font-size: 16px;
+    }
+
+    .content h2{
+      color: var(--text);
+      margin: 22px 0 10px;
+      font-size: 19px;
+      letter-spacing: -0.2px;
+    }
+
+    .content ul{
+      margin: 0 0 16px 20px;
+      padding: 0;
+    }
+
+    .content li{
+      margin: 6px 0;
+    }
+
+    .content strong{
+      color: var(--text);
+    }
+
+    .callout{
+      margin: 18px 0;
+      padding: 14px 14px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.05);
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    footer{
+      margin-top: 18px;
+      text-align:center;
+      color: rgba(255,255,255,0.5);
+      font-size: 13px;
+    }
+
+    @media (max-width: 780px){
+      .card{ padding: 16px 16px 6px; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="stack">
+
+      <img class="logo" src="https://fhpappys.com/assets/logo.png" alt="FH Pappy’s" />
+
+      <h1>Community Safety Guidelines</h1>
+      <p class="sub">
+        Our DIY venue is a community space built on mutual respect, care, and accountability.
+        These guidelines exist to keep shows fun, loud, and safe for everyone.
+      </p>
+
+      <div class="links">
+        <a class="pill" href="https://fhpappys.com/">FH Pappy’s Home</a>
+        <a class="pill" href="/submit/">Band Submissions</a>
+        <a class="pill" href="/">Bands Home</a>
+      </div>
+
+      <div class="card">
+        <div class="content">
+
+          <h2>Respect & Safer Space</h2>
+          <ul>
+            <li><strong>Zero tolerance</strong> for harassment, assault, or hate speech</li>
+            <li>Racism, sexism, homophobia, transphobia, ableism, and intimidation are not welcome</li>
+            <li>Respect people’s boundaries, identities, and pronouns</li>
+          </ul>
+
+          <h2>Crowd Safety</h2>
+          <ul>
+            <li>Moshing is consensual — look out for each other</li>
+            <li>Pick people up if they fall</li>
+            <li>No pushing people who aren’t participating</li>
+            <li>Keep exits, stairs, and hallways clear at all times</li>
+            <li>Naloxone (Narcan) and basic first aid on site when possible</li>
+          </ul>
+
+          <h2>What’s Not Allowed</h2>
+          <ul>
+            <li><strong>No weapons</strong> of any kind</li>
+            <li><strong>No outside food or drink</strong>, including alcohol</li>
+            <li><strong>No hate symbols</strong> on clothing or gang colors</li>
+            <li>Illicit drugs</li>
+          </ul>
+
+          <div class="callout">
+            Entry may be denied or revoked to keep the space safe.
+          </div>
+
+          <h2>Accessibility & Inclusion</h2>
+          <ul>
+            <li>We aim to make the space as accessible as possible</li>
+            <li>Seating and quiet space available upon request</li>
+            <li>Sliding-scale or donation-based entry whenever we can</li>
+          </ul>
+
+          <h2>If There’s a Problem</h2>
+          <ul>
+            <li>Find a safety volunteer or organizer</li>
+            <li>We prioritize harm reduction, de-escalation, care, and community accountability</li>
+            <li>Anyone causing harm may be removed from the space</li>
+          </ul>
+
+          <div class="callout">
+            Police are a last resort and only used in emergencies.
+          </div>
+
+          <h2>Community Agreement</h2>
+          <p>
+            By attending events here, you agree to respect these guidelines and help keep the space safe for everyone.
+            <br /><br />
+            <strong>Take care of each other.</strong>
+          </p>
+
+        </div>
+      </div>
+
+      <footer>© FH Pappy’s • York, PA</footer>
+
+    </div>
+  </div>
+</body>
+</html>
