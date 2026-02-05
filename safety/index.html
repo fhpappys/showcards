@@ -7,12 +7,18 @@
 
   <style>
     :root{
-      --bg: #000;
-      --text: #fff;
-      --muted: rgba(255,255,255,0.82);
-      --muted2: rgba(255,255,255,0.65);
-      --border: rgba(255,255,255,0.22);
-      --border2: rgba(255,255,255,0.36);
+      /* FH Pappy’s palette */
+      --bg: #0b0b0b;
+      --text: #f5f5f5;
+      --muted: #d6d2c4;
+      --muted2: #b9b39f;
+
+      --accent: #e6d27a;        /* warm logo yellow */
+      --accent-soft: rgba(230,210,122,0.18);
+
+      --border: rgba(255,255,255,0.18);
+      --border2: rgba(230,210,122,0.45);
+
       --radius: 18px;
     }
 
@@ -31,7 +37,7 @@
       display:flex;
       align-items:center;
       justify-content:center;
-      padding: 40px 16px;
+      padding: 42px 16px;
     }
 
     .stack{
@@ -49,17 +55,17 @@
     }
 
     h1{
-      margin: 0 0 10px;
-      font-size: clamp(28px, 4vw, 44px);
+      margin: 0 0 12px;
+      font-size: clamp(30px, 4vw, 44px);
       letter-spacing: -0.6px;
       line-height: 1.05;
     }
 
     .sub{
-      margin: 0 auto 22px;
+      margin: 0 auto 24px;
       max-width: 72ch;
       color: var(--muted);
-      line-height: 1.55;
+      line-height: 1.6;
       font-size: 16px;
     }
 
@@ -68,7 +74,7 @@
       flex-wrap: wrap;
       gap: 10px;
       justify-content: center;
-      margin: 0 0 26px;
+      margin: 0 0 28px;
     }
 
     .pill{
@@ -87,8 +93,8 @@
     }
 
     .pill:hover{
-      border-color: var(--border2);
-      background: rgba(255,255,255,0.06);
+      border-color: var(--accent);
+      background: var(--accent-soft);
       transform: translateY(-1px);
     }
 
@@ -98,25 +104,25 @@
       text-align:left;
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 20px 20px 8px;
+      padding: 22px 22px 10px;
       background: rgba(255,255,255,0.03);
     }
 
     .content{
       color: var(--muted);
-      line-height: 1.65;
+      line-height: 1.7;
       font-size: 16px;
     }
 
     .content h2{
-      color: var(--text);
-      margin: 22px 0 10px;
+      color: var(--accent);
+      margin: 26px 0 10px;
       font-size: 19px;
       letter-spacing: -0.2px;
     }
 
     .content ul{
-      margin: 0 0 16px 20px;
+      margin: 0 0 18px 22px;
       padding: 0;
     }
 
@@ -129,24 +135,24 @@
     }
 
     .callout{
-      margin: 18px 0;
+      margin: 20px 0;
       padding: 14px 14px;
       border-radius: 14px;
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--accent);
+      background: var(--accent-soft);
       color: var(--muted);
       font-size: 15px;
     }
 
     footer{
-      margin-top: 18px;
+      margin-top: 20px;
       text-align:center;
-      color: rgba(255,255,255,0.5);
+      color: var(--muted2);
       font-size: 13px;
     }
 
     @media (max-width: 780px){
-      .card{ padding: 16px 16px 6px; }
+      .card{ padding: 18px 18px 8px; }
     }
   </style>
 </head>
