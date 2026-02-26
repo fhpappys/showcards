@@ -62,9 +62,9 @@ export default async () => {
         const notes = clean(f.Notes || "");
         const doors = clean(f.Doors || "");
         const price = clean(f.Price || "");
-        const genre = record.fields["Genre"] || "";
 
-
+        // ✅ Genre: single line text in Airtable
+        const genre = clean(f.Genre || "");
 
         return {
           id: rec.id,
@@ -79,6 +79,7 @@ export default async () => {
           moreInfoUrl,
           notes,
           flyerUrl,
+          genre, // ✅ include in response
         };
       })
       .filter((x) => x.date);
@@ -100,5 +101,3 @@ export default async () => {
     });
   }
 };
-
-
