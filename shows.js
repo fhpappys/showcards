@@ -77,13 +77,20 @@ function renderCard(show) {
         </div>`
       : "";
 
+  const genrePill = show.genre
+    ? `<span class="genre-pill">${esc(show.genre)}</span>`
+    : "";
+
   return `
     <article class="show-card">
       ${flyer}
       <div class="show-body">
-        <p class="show-date">
-          ${esc(formatDate(show.date, show.doors, show.price))}
-        </p>
+        <div class="show-topline">
+          <p class="show-date">
+            ${esc(formatDate(show.date, show.doors, show.price))}
+          </p>
+          ${genrePill}
+        </div>
 
         ${show.band ? `<p class="show-band">${esc(show.band)}</p>` : ""}
         ${show.venue ? `<p class="show-venue">${esc(show.venue)}</p>` : ""}
