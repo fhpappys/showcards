@@ -62,6 +62,7 @@ export default async () => {
         const notes = clean(f.Notes || "");
         const doors = clean(f.Doors || "");
         const price = clean(f.Price || "");
+        const genre = record.fields["Genre"] || "";
 
 
 
@@ -99,4 +100,5 @@ export default async () => {
     });
   }
 };
+
 
